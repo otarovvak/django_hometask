@@ -1,0 +1,56 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="page">
+    <div class="filter-panel">
+        <label for="category">Category</label>
+        <select id="category" name="category">
+            <option value="">Select a category</option>
+            {% for category in categories %}
+                <option value="{{ category.name }}">{{ category.name }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="search">Search by description</label>
+        <input type="text" id="search" name="search" placeholder="Search products by description">
+
+        <div class="tag-buttons">
+            {% for tag in tags %}
+                <button type="button" data-tag="{{ tag.name }}">{{ tag.name }}</button>
+            {% endfor %}
+        </div>
+
+        <button class="reset" type="button" id="resetFilters">Reset Filters</button>
+    </div>
+
+    <div class="product-grid" id="productGrid">
+        {% for product in products %}
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>{{ product.name }}</h3>
+                    <p>{{ product.description }}</p>
+                    <p class="category">Category: {{ product.category.name }}</p>
+                    <div class="tags">
+                        {% for tag in product.tags.all %}
+                            <span>{{ tag.name }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <div>No products found.</div>
+        {% endfor %}
+    </div>
+</div>
+
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
