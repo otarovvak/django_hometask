@@ -18,8 +18,8 @@ Make sure you have the following installed:
 1) First, clone the project from GitHub:
 
    ```bash
-   git clone https://github.com/otarovvak/django_task.git
-   cd django_task
+   git clone https://github.com/otarovvak/django_hometask.git
+   cd django_hometask
 
 2) Then, create and activate a Virtual Environment:
 
